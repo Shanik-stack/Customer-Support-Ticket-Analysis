@@ -49,7 +49,9 @@ def build_graph_from_tickets(df: pd.DataFrame):
                                 database_="neo4j")
     print("Built Graph Database")
     
+    
 def find_multi_product_customers():
+    
     multi_product_customers_query = """MATCH (c:Customer)-[:RAISED]->(t:Ticket)-[:ABOUT]->(p:Product) 
     WITH c, count(DISTINCT p) AS product_count
     WHERE product_count>1 
