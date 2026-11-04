@@ -10,4 +10,5 @@ RUN pip install --no-cache-dir .
 
 COPY data/ ./data/
 
-CMD ["python", "-m", "customer_support_tickets.main"]
+#Runs the main file
+CMD ["python", "-m", "customer_support_tickets.main"] 

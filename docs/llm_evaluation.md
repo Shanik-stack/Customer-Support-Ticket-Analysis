@@ -22,7 +22,7 @@ This is measured by, Salient Content Coverage = (Reference claims preserved in s
 
 #### Normalised Score
 
-Lets give a higher weight to the Objective metrics as they have higher importance because they preserve information.
+Lets give a higher weight to the Objective metrics as they have higher importance because they are responsible in preserving information from the reference.
 
 Let,
 weight_obj = 2

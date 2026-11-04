@@ -6,8 +6,7 @@ import pandas as pd
 
 
 load_dotenv()
-
-uri = "neo4j://localhost:7687"
+uri = os.getenv("NEO4J_URI", "neo4j://localhost:7687")
 user, password = ("neo4j", os.environ["NEO4J_PASSWORD"])
 
 # Databse connector function
