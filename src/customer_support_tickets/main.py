@@ -2,10 +2,11 @@ import json
 from pathlib import Path
 import pandas as pd
 
-from customer_support_tickets import clean_tickets, analyse_tickets
+from customer_support_tickets import *
+
 def main():
     
-    # Part A
+    # Part-A
     
     tickets_data_path = Path("data/tickets.json")
     
@@ -13,13 +14,21 @@ def main():
         tickets = json.load(f)
     df = pd.DataFrame(tickets)
     
+    # cleaning tickets
     cleaned_df = clean_tickets(df)
-    
+    # obtaining analysis on tickets
     analysis_statistics = analyse_tickets(cleaned_df)
-    print(analysis_statistics)
+    print("Ticket Analysis results\n", analysis_statistics)
     
     # Part B
+    # Check out docs\ai_use_documentation.md for my LLM evaluation
     
+    #Building Neo4j GraphDatabase from cleaned ticket data
+    build_graph_from_tickets(cleaned_df)
+    
+    #Querying GraphDatabase for users that raised ticket for multiple distinct products
+    query_results = find_multi_product_customers()
+    print(f"Results of query: \n {query_results}")
     
 if __name__ == "__main__":
     main()

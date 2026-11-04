@@ -13,10 +13,14 @@ def clean_tickets(df: pd.DataFrame) -> pd.DataFrame:
     
     # Remove Duplicates
     cleaned_df = cleaned_df.drop_duplicates()
-    if cleaned_df["ticket_id"].duplicated().sum() > 0:
-        raise ValueError("Multiple tickets with same ticket ID")
     
-    # Checking missing value in mandatory cols
+    # Raise error if duplicate ticket_id 
+    ticket_counts = cleaned_df["ticket_id"].value_counts()
+    duplicate_tickets = ticket_counts[ticket_counts > 1]
+    if duplicate_tickets.empty is not True:
+        raise ValueError(f"Multiple tickets with same ticket ID: {list(zip(list(duplicate_tickets.index), list(duplicate_tickets)))}")
+    
+    # Raise error if missing value in mandatory cols
     missing_values = cleaned_df[mandatory_cols].isna().sum()
     missing_values = missing_values[missing_values>0]
     if missing_values.empty is not True:

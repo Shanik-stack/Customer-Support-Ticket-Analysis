@@ -1,0 +1,14 @@
+#define services
+services:
+  neo4j-database:
+    image: neo4j:2026.10.1
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD}"
+    ports:
+      - "127.0.0.1:7474:7474" #http port
+      - "127.0.0.1:7687:7687" #bolt port
+    volumes:
+      - ticket_database:/data
+
+volumes:
+  ticket_database:
