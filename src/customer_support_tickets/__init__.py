@@ -1,2 +1,2 @@
 from .cleaning import clean_tickets
-# from .analysis import compute_statistics
+from .analysis import analyse_tickets
