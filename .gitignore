@@ -1,6 +1,4 @@
-src/customer_support_tickets/analysis.py
 src/customer_support_tickets/__pycache__/*
 src/support_tickets.egg-info/*
 tests/__pycache__/*
-ai_use_documentation.md
 .env

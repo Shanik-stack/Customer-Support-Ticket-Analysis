@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 import pandas as pd
-
+from pathlib import Path
 
 load_dotenv()
 uri = os.getenv("NEO4J_URI", "neo4j://localhost:7687")
