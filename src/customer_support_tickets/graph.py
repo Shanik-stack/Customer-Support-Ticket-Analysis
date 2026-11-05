@@ -13,7 +13,7 @@ user, password = ("neo4j", os.environ["NEO4J_PASSWORD"])
 def connect_to_database():
     driver =  GraphDatabase.driver(uri, auth=(user, password)) 
     driver.verify_connectivity()
-    print("connection_established")
+    print("| Connection with database established |")
     return driver
 
 def build_graph_from_tickets(df: pd.DataFrame):
@@ -63,7 +63,7 @@ def build_graph_from_tickets(df: pd.DataFrame):
                 ),
                 database_="neo4j"
             )
-    print("Built Graph Database")
+    print("\n ----- Built Graph Database ----- \n")
     
     
 def find_multi_product_customers():
