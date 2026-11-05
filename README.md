@@ -4,10 +4,11 @@ A Python project for cleaning support-ticket data, calculating resolution statis
 
 ## Implementation
 
-- **Data cleaning (`cleaning.py`):** Removes exact duplicates, normalizes missing text values, and detects conflicting ticket IDs.
-- **Analysis (`analysis.py`):** Computes open/resolved counts per product and the average resolution time of resolved tickets.
-- **LLM evaluation:** Scores the three supplied summaries on faithfulness, salient content coverage, clarity/fluency, and conciseness. Detailed reasoning is in [docs/llm_evaluation.md](docs/llm_evaluation.md).
-- **Knowledge graph (`graph.py`):** Imports cleaned records using parameterized Cypher and `MERGE`, following `(:Customer)-[:RAISED]->(:Ticket)-[:ABOUT]->(:Product)`.
+
+- **Data cleaning ([cleaning.py](src/customer_support_tickets/cleaning.py)):** Removes exact duplicates, normalizes missing text values, and detects conflicting ticket IDs.
+- **Analysis ([analysis.py](src/customer_support_tickets/analysis.py)):** Computes open/resolved counts per product and the average resolution time of resolved tickets.
+- **LLM evaluation ([llm_evaluation.md](docs/llm_evaluation.md)):** Scores the three summaries on faithfulness, salient content coverage, clarity/fluency, and conciseness.
+- **Knowledge graph ([graph.py](src/customer_support_tickets/graph.py)):** Imports cleaned records using parameterized Cypher and `MERGE`, following `(:Customer)-[:RAISED]->(:Ticket)-[:ABOUT]->(:Product)`.
 
 ## Results
 

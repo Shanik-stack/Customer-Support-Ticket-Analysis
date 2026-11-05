@@ -27,10 +27,16 @@ def build_graph_from_tickets(df: pd.DataFrame):
     """
     
     # Query to create the entities in the ticket
+    # SET after MERGE allows the merge to identify the ticket using the ticket_id and then set the properties
     create_entity_nodes = """
     MERGE (c:Customer {name: $customer})
     MERGE (t:Ticket {ticket_id: $ticket_id})
-    MERGE (p:Product {name: $product}) """
+    SET t.status = $status,
+        t.issue = $issue,
+        t.created_at = $created_at,
+        t.resolved_at = $resolved_at
+    MERGE (p:Product {name: $product})
+    """
     
     #Query to create relationship between the entities
     create_relationship_nodes = """
@@ -41,12 +47,22 @@ def build_graph_from_tickets(df: pd.DataFrame):
     merge_query = f"""{create_entity_nodes} {create_relationship_nodes}"""
     
     with connect_to_database() as driver:
-        for row in df.itertuples():
-            driver.execute_query(merge_query,
-                                customer=row.customer,
-                                ticket_id=row.ticket_id,
-                                product=row.product,
-                                database_="neo4j")
+        for row in df.itertuples(index=False):
+            driver.execute_query(
+                merge_query,
+                customer=row.customer,
+                ticket_id=row.ticket_id,
+                product=row.product,
+                status=row.status,
+                issue=None if pd.isna(row.issue) else row.issue,
+                created_at=row.created_at.to_pydatetime(),
+                resolved_at=(
+                    None
+                    if pd.isna(row.resolved_at)
+                    else row.resolved_at.to_pydatetime()
+                ),
+                database_="neo4j"
+            )
     print("Built Graph Database")
     
     
