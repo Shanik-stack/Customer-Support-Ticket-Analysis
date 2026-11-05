@@ -77,5 +77,3 @@ DC_Coding_Assignment/
 ├── pyproject.toml                    
 └── README.md                         
 ```
-
-**Note:** Customer names are used as graph identifiers because the supplied dataset has no customer IDs.
