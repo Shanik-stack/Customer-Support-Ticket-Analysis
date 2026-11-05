@@ -29,7 +29,7 @@ def main():
     #Querying GraphDatabase for users that raised ticket for multiple distinct products
     query_results = find_multi_product_customers()
     print(f"\n Results of multi product customer query: \n {query_results} \n")
-    
+
 if __name__ == "__main__":
     main()
         

@@ -2,4 +2,3 @@ src/customer_support_tickets/__pycache__/*
 src/support_tickets.egg-info/*
 tests/__pycache__/*
 .env
-src/customer_support_tickets/llm_as_judge.py

@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from neo4j import GraphDatabase
 import pandas as pd
-from pathlib import Path
 
 load_dotenv()
 uri = os.getenv("NEO4J_URI", "neo4j://localhost:7687")
@@ -74,7 +73,7 @@ def find_multi_product_customers():
     RETURN c.name as customer, product_count"""
     
     with connect_to_database() as driver:
-        records, summary, keys = driver.execute_query(multi_product_customers_query, databse = "neo4j")
+        records, summary, keys = driver.execute_query(multi_product_customers_query, database = "neo4j")
         # print(f"Summary of query: {summary}")
         return [record.data() for record in records]
         
