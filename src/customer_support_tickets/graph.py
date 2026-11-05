@@ -73,7 +73,7 @@ def find_multi_product_customers():
     RETURN c.name as customer, product_count"""
     
     with connect_to_database() as driver:
-        records, summary, keys = driver.execute_query(multi_product_customers_query, database = "neo4j")
+        records, summary, keys = driver.execute_query(multi_product_customers_query, database_ = "neo4j")
         # print(f"Summary of query: {summary}")
         return [record.data() for record in records]
         

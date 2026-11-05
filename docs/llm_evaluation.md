@@ -2,7 +2,7 @@
 
 Let us define metrics to evaluate LLM summaries.
 
-## Evaluation Rubrik
+### Evaluation Rubrik
 
 #### Objective metrics
 
@@ -58,7 +58,7 @@ Conciseness = 1, the summary is concise and information dense.
 
 Normalised Score = (2 * (1 + 2/3) + 1 + 1) / 6 = 0.89
 
-T2
+#### T2
 
 Reference: "CloudSync sync process hangs near completion."
 LLM: "Sync is stuck."

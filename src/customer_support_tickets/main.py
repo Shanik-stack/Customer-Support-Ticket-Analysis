@@ -16,6 +16,7 @@ def main():
     
     # cleaning tickets
     cleaned_df = clean_tickets(df)
+    
     # obtaining analysis on tickets
     analysis_statistics = analyse_tickets(cleaned_df)
     print("\n Ticket Analysis results: \n", analysis_statistics, "\n")
